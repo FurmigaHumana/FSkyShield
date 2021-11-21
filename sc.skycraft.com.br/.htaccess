@@ -1,0 +1,28 @@
+RewriteEngine On
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteRule ^home$ ./index.php
+#RewriteRule ^(.*)\.(jpg|png|jpeg)$ min/imgless.php?image=$1.$2&format=$2 [NC,L]
+
+RewriteRule ^js/A0_(.+)_.js$ ./router.php?type=js&file=$1 [NC,L]
+RewriteRule ^css/A0_(.+)_.css$ ./router.php?type=css&file=$1 [NC,L]
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year”
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType text/css "access 1 year”
+    ExpiresByType application/javascript "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(woff2|eot|svg|ttf|woff|otf)$">
+    Header append Vary: Accept-Encoding
+  </FilesMatch>
+</IfModule>
