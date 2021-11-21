@@ -1,0 +1,10 @@
+version:
+    name: '1.11.2'
+    errors:
+        - class name $# error str
+    game:
+        - class name
+    libs:
+        - class name
+    java:
+        - class name

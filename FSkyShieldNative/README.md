@@ -1,0 +1,1 @@
+Ps. Não sou dev de C/C++/C#, aqui foi tudo erro e tentativa. Não julgue. 

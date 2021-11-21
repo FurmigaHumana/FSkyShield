@@ -1,0 +1,65 @@
+<config>
+    <input>
+        <jar in="{#injar}" out="{#outjar}"/>
+    </input>
+	
+	<classpath>
+		<jar name="@@REMOVED"/>
+		<jar name="@@REMOVED"/>
+	</classpath>
+
+    <keep-names>
+        <class template="class me.FurH.SkyShield.win32.NativeException"/>
+        <class template="class *SetupNative"/>
+        <class template="class *BClassLoader" ignore="true">
+			<method template="public+ initialize*(**)" parameters="keep"/>
+		</class>
+        <class template="class *AClassLoader">
+			<method template="private+ defineClass*(**)" parameters="keep"/>
+			<method template="public agentmain*(**)"/>
+			<method template="public getInstrumentation*(**)"/>
+		</class>
+        <class template="class *CClassLoader" ignore="true">
+			<method template="defineClass*(**)" parameters="keep"/>
+		</class>
+    </keep-names>
+	
+    <property name="log-file" value="target/log.xml"/>
+	
+    <!-- String encryption -->
+    <property name="string-encryption" value="disable"/>
+    <property name="string-encryption-type" value="fast"/>
+   
+	<!-- Control flow obfuscation -->
+    <property name="control-flow-obfuscation" value="enable"/>
+    <property name="extensive-flow-obfuscation" value="maximum"/>
+    
+	<!-- Renaming -->
+
+    <property name="default-package" value="{#version}"/>
+	<property name="force-default-package" value="enable"/>
+	
+    <property name="packages-naming" value="abc"/>
+    <property name="classes-naming" value="compact"/>
+    <property name="methods-naming" value="compact"/>
+    <property name="fields-naming" value="compact"/>
+    <property name="local-variables-naming" value="optimize"/>
+
+    <property name="update-resource-names" value="enable"/>
+    <property name="update-resource-contents" value="enable"/>
+   
+	<!-- Other -->
+    <property name="line-numbers" value="remove"/>
+    <property name="generics" value="remove"/>
+    <property name="inner-classes" value="remove"/>
+    <property name="member-reorder" value="enable"/>
+    <property name="finalize" value="enable"/>
+    <property name="version-marker" value="{#version}"/>
+    <property name="remove-toString" value="enable"/>
+	
+    <property name="synthetize-methods" value="{#synth}"/>
+    <property name="synthetize-fields" value="{#synth}"/>
+	
+	<property name="output-jar-compression-level" value="9"/>
+
+</config>

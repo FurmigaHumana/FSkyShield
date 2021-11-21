@@ -1,0 +1,11 @@
+database:
+    root:
+        Host: localhost
+        Port: 3306
+        Username: root
+        Password: ''
+        Table: skyshield
+        Advanced:
+            Threads: 4
+            Timeout: 1 h
+            KeepAlive: false
